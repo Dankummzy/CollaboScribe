@@ -24,7 +24,7 @@ CollaboScribe is a real-time collaborative blog platform that aims to simplify t
 
 To run the project locally, follow these steps:
 
-**Clone the repository:** git clone https://github.com/your-username/collaboscribe.git
+**Clone the repository:** git clone https://github.com/Dankummzy/collaboscribe.git
 
 **Install dependencies:** pip install -r requirements.txt
 
