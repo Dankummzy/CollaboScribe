@@ -3,6 +3,13 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Article, Collaboration
 from .forms import ArticleForm  # Import the ArticleForm
 from django.contrib.auth.decorators import login_required
+import firebase_admin
+from firebase_admin import credentials, db
+
+
+# Initialize Firebase Realtime Database
+cred = credentials.Certificate(r"C:\Users\user\Desktop\StartUp\firebase\collaboscribe-firebase-adminsdk-5y7sx-5f6451a4dd.json")
+firebase_admin.initialize_app(cred, {'databaseURL': 'https://collaboscribe-default-rtdb.firebaseio.com/'})
 
 @login_required
 def create_article(request):
@@ -50,3 +57,19 @@ def view_article(request, article_id):
     article = get_object_or_404(Article, id=article_id)
     collaborations = Collaboration.objects.filter(article=article)
     return render(request, 'articles/article_detail.html', {'article': article, 'collaborations': collaborations})
+
+
+def collaborate(request, article_id):
+    if request.method == 'POST':
+        content = request.POST['content']
+        # Save collaboration content to Firebase Realtime Database
+        db.reference(f'article_collaborations/{article_id}').push({
+            'user_id': request.user.id,
+            'content': content,
+        })
+        return redirect('article_detail', article_id=article_id)
+    else:
+        # Render collaboration form
+        return render(request, 'articles/collaborate.html', {'article_id': article_id})
+
+

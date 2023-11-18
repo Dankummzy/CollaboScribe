@@ -4,10 +4,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('articles/', include('articles.urls', namespace='articles')),
     path('', include('users.urls', namespace='users')),
+
     # Add more app-specific URL patterns as needed
 ]
 

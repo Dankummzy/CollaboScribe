@@ -21,16 +21,19 @@
                         <a class="btn btn-primary btn-lg" href="{% url 'articles:create_article' %}" role="button">Create Article</a>
                     </div>
                     <!-- Login/Register Button -->
-                    <div class="card mt-4">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Join Us!</h5>
-                            <p class="card-text">Unlock the full potential of CollaboScribe by creating an account. Start collaborating and sharing your thoughts with our community.</p>
-                            <div class="mt-4 text-center">
-                                <a class="btn btn-primary" href="{% url 'users:register' %}" role="button">Register</a>
-                                <a class="btn btn-outline-primary" href="#" role="button">Login</a>
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Join Us!</h5>
+                        <p class="card-text">Unlock the full potential of CollaboScribe by creating an account. Start collaborating and sharing your thoughts with our community.</p>
+                        <div class="card mt-4">
+                            <div class="card-body">
+                                <div>
+                                    <a href="{% url 'users:firebase_authenticate' %}" class="btn btn-primary">Sign In / Register with Firebase</a>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
                 </div>
                 <div class="col-md-4">
                     <!-- Sidebar -->
@@ -45,7 +48,6 @@
                                 <li class="list-group-item"><a href="#">Article 3</a></li>
                             </ul>
 
-                            <!-- Social Media Section -->
                             <!-- Social Media Section -->
                             <div class="mt-4">
                                 <h5 class="text-center">Follow Us</h5>
@@ -98,5 +100,4 @@
     </section>
 
     <!-- Add more sections or customize as needed -->
-
 {% endblock %}

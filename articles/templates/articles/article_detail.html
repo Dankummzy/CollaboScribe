@@ -1,10 +1,25 @@
+<!-- articles/article_detail.html -->
 {% extends 'base.html' %}
 {% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
 
-{% block title %}{{ article.title }}{% endblock %}
 
 {% block content %}
-  <h2 class="mt-4">{{ article.title }}</h2>
-  <p>{{ article.content }}</p>
-  <!-- Add collaboration details or other content as needed -->
+  <div class="container mt-5">
+    <h2>{{ article.title }}</h2>
+    <p>{{ article.content }}</p>
+
+    <!-- Display Collaborations -->
+    <div class="mt-4">
+      <h4>Collaborations</h4>
+      <ul>
+        {% for collaboration in collaborations %}
+          <li>
+            <strong>{{ collaboration.user.username }}</strong>: {{ collaboration.content }}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
 {% endblock %}

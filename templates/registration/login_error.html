@@ -1,0 +1,23 @@
+<!-- registration/login_error.html -->
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Login Error</h5>
+                        <p class="card-text">There was an error during the login process. Please try again.</p>
+                        <a href="{% url 'users:home' %}" class="btn btn-primary">Go to Home</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Sidebar and additional content go here -->
+        </div>
+    </div>
+{% endblock %}
