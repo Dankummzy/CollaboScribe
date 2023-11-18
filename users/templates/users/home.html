@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block content %}
+    <header class="bg-primary text-white text-center py-5">
+        <div class="container">
+            <h1 class="display-4">Welcome to CollaboScribe</h1>
+            <p class="lead">A Real-Time Collaborative Blog Platform</p>
+        </div>
+    </header>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="jumbotron">
+                        <h2 class="display-5">Start Writing and Collaborating Now!</h2>
+                        <p class="lead">Join our community and create engaging content together.</p>
+                        <a class="btn btn-primary btn-lg" href="{% url 'articles:create_article' %}" role="button">Create Article</a>
+                    </div>
+                    <!-- Login/Register Button -->
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Join Us!</h5>
+                            <p class="card-text">Unlock the full potential of CollaboScribe by creating an account. Start collaborating and sharing your thoughts with our community.</p>
+                            <div class="mt-4 text-center">
+                                <a class="btn btn-primary" href="{% url 'users:register' %}" role="button">Register</a>
+                                <a class="btn btn-outline-primary" href="#" role="button">Login</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <!-- Sidebar -->
+                    <div class="card">
+                        <div class="card-body">
+                            
+                            <!-- Additional Content -->
+                            <ul class="list-group">
+                                <li class="list-group-item text-center h5">Popular Articles</li>
+                                <li class="list-group-item"><a href="#">Article 1</a></li>
+                                <li class="list-group-item"><a href="#">Article 2</a></li>
+                                <li class="list-group-item"><a href="#">Article 3</a></li>
+                            </ul>
+
+                            <!-- Social Media Section -->
+                            <!-- Social Media Section -->
+                            <div class="mt-4">
+                                <h5 class="text-center">Follow Us</h5>
+                                <div class="btn-group" role="group">
+                                    <a href="#" class="btn btn-sm btn-outline-primary"><i class="bi bi-facebook"></i> Facebook</a>
+                                    <a href="#" class="btn btn-sm btn-outline-info"><i class="bi bi-twitter"></i> Twitter</a>
+                                    <a href="#" class="btn btn-sm btn-outline-danger"><i class="bi bi-youtube"></i> YouTube</a>
+                                    <a href="#" class="btn btn-sm btn-outline-danger"><i class="bi bi-instagram"></i> Instagram</a> <!-- Added Instagram link -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Newsletter Subscription Section -->
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <h5>Subscribe to Our Newsletter</h5>
+                            <form>
+                                <div class="input-group">
+                                    <input type="email" class="form-control" placeholder="Your email" aria-label="Your email" aria-describedby="button-addon2">
+                                    <button class="btn btn-primary" type="button" id="button-addon2">Subscribe</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Featured Articles</h2>
+    
+            <div class="row">
+                {% for article in featured_articles %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <!-- Add your article content here -->
+                            <div class="card-body">
+                                <h5 class="card-title">{{ article.title }}</h5>
+                                <p class="card-text">{{ article.content|truncatechars:150 }}</p>
+                                <a href="{% url 'articles:view_article' article.id %}" class="btn btn-primary">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Add more sections or customize as needed -->
+
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block content %}
+  <h2 class="mt-4">{{ article.title }}</h2>
+  <p>{{ article.content }}</p>
+  <!-- Add collaboration details or other content as needed -->
+{% endblock %}

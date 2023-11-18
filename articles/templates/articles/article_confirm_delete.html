@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block title %}Confirm Delete Article{% endblock %}
+
+{% block content %}
+  <h2 class="mt-4">Confirm Delete</h2>
+  <p>Are you sure you want to delete "{{ article.title }}"?</p>
+  <form method="post" class="mt-4">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+    <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
+  </form>
+{% endblock %}
